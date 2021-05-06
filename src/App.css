@@ -1,8 +1,9 @@
 .result {
-  height: 60px;
+  height: 120px;
   background-color: rgba(0, 0, 0, .75);
   width: 100%;
-
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .result p {
@@ -20,10 +21,7 @@
 }
 
 .button {
-  /* calculator grid */
-  /* display: block; */
-  /* background-color:  #00AAFF; */
-   display: grid;
+  display: grid;
   grid-template-columns: repeat(4,100px);
   grid-template-rows: minmax(120px,auto) repeat(5,100px);
   justify-content: center;
@@ -38,17 +36,7 @@ button {
   border: 1px solid white;
   outline: none;
   background-color: rgba(255,255,255,.75);
-  /* width: 25%;
-  height: 75px;
-  font-size: 20px;
-  color:rgb(52, 237, 31) */
-
-  /* display: grid;
-  grid-template-columns: repeat(4,100px);
-  grid-template-rows: minmax(120px,auto) repeat(5,100px);
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; */
+  
 }
 
 .button > button:hover {

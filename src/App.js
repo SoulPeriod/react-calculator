@@ -45,7 +45,6 @@ class App extends Component {
 
         try {
             this.setState({
-                // eslint-disable-next-line
                 result: (eval(checkResult) || "" ) + ""
             })
         } catch (e) {
@@ -69,6 +68,7 @@ class App extends Component {
     };
 
     render() {
+        
         return (
             <div>
                 <div className="calculator-body">
