@@ -1,25 +1,84 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import Results from './Components/Results';
+import KeyPad from './Components/KeyPad';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor(){
+        super();
+
+        this.state = {
+            result: ""
+        }
+    }
+
+    onClick = button => {
+
+        if(button === "="){
+            this.calculate()
+        }
+
+        else if(button === "C"){
+            this.reset()
+        }
+        else if(button === "CE"){
+            this.backspace()
+        }
+
+        else {
+            this.setState({
+                result: this.state.result + button
+            })
+        }
+    };
+
+
+    calculate = () => {
+        let checkResult = ''
+        if(this.state.result.includes('--')){
+            checkResult = this.state.result.replace('--','+')
+        }
+
+        else {
+            checkResult = this.state.result
+        }
+
+        try {
+            this.setState({
+                // eslint-disable-next-line
+                result: (eval(checkResult) || "" ) + ""
+            })
+        } catch (e) {
+            this.setState({
+                result: "nope"
+            })
+
+        }
+    };
+
+    reset = () => {
+        this.setState({
+            result: ""
+        })
+    };
+
+    backspace = () => {
+        this.setState({
+            result: this.state.result.slice(0, -1)
+        })
+    };
+
+    render() {
+        return (
+            <div>
+                <div className="calculator-body">
+                    <h1>Calculate</h1>
+                    <Results result={this.state.result}/>
+                    <KeyPad onClick={this.onClick}/>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
