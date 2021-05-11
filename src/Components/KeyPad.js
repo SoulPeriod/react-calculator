@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 class KeyPad extends Component {
+    // this should be a functional component since it doesn't use state or lifecycle methods.
 
     render() {
         return (
