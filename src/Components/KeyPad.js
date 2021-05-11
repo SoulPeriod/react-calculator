@@ -5,6 +5,9 @@ class KeyPad extends Component {
     render() {
         return (
             <div className="button">
+            { /* Writing out all this code for each button is tedious and violates DRY!
+                // try creating an array (const buttons = ["(", "CE", ")", ...])
+                // Then you can use buttons.map() to create an array with all these buttons */ }
                 <button name="(" onClick={e => this.props.onClick(e.target.name)}>(</button>
                 <button name="CE" onClick={e => this.props.onClick(e.target.name)}>CE</button>
                 <button name=")" onClick={e => this.props.onClick(e.target.name)}>)</button>
