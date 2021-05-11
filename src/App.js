@@ -32,9 +32,10 @@ class App extends Component {
         }
     };
 
-
+ 
     calculate = () => {
         let checkResult = ''
+        // Interesting edge case! 
         if(this.state.result.includes('--')){
             checkResult = this.state.result.replace('--','+')
         }
@@ -45,10 +46,12 @@ class App extends Component {
 
         try {
             this.setState({
+                // Why did you decide to use the || operator here? What happens if eval returns 0?
                 result: (eval(checkResult) || "" ) + ""
             })
         } catch (e) {
             this.setState({
+                // 0 might be a better default value!
                 result: "nope"
             })
 
